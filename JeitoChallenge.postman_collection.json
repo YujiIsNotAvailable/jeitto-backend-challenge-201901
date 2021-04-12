@@ -1,0 +1,742 @@
+{
+	"info": {
+		"_postman_id": "afbdfd98-947c-4246-bcb4-4a18f3285136",
+		"name": "JeitoChallenge",
+		"description": "# Routes:\n\n/auth\n- (authenticate an user)\n\n/companies\n- (get all companies)\n- (get company by id)\n- **[token needed]** (add new company) \n- **[token needed]** (delete company)\n\n/products\n- (get all products)\n- (get products from company_id)\n- **[token needed]** (add new product) \n- **[token needed]** (delete product)\n\n/recharges\n- (get all recharges)\n- (get recharges from phone number)\n- (recharge a phone)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "authenticate",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/auth",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "Do a **/auth** [post] request with username and password\n\nToken is needed in anothers requests.",
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "password",
+						"value": "admin",
+						"type": "string"
+					},
+					{
+						"key": "username",
+						"value": "admin",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Companies",
+			"item": [
+				{
+					"name": "get_company",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/companies/{id}",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"companies",
+								"{id}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get company tim_11",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/companies/tim_11",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"companies",
+										"tim_11"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "53"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Apr 2021 00:08:58 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Python/3.9 aiohttp/3.7.4"
+								}
+							],
+							"cookie": [],
+							"body": "{\"id\": \"tim_11\", \"created_at\": \"2021-04-10 23:48:46\"}"
+						},
+						{
+							"name": "get company claro_11",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/companies/claro_11",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"companies",
+										"claro_11"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "get_companies",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/companies",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_company",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwaXJhdGlvbl9kYXRlIjoiMjAyMS0wNC0xMVQyMTowODozMi45NzE5MDQifQ.A2dTTuaUtitqWo56k_k0hBoGWKkKeqV9jav-cnmdcd0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"{id}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/companies",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"companies"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "add company xpto_11",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": \"xpto_11\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/companies",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"companies"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "29"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Apr 2021 00:09:13 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Python/3.9 aiohttp/3.7.4"
+								}
+							],
+							"cookie": [],
+							"body": "{\"id\": \"xpto_11\", \"created_at\": \"2021-04-11 00:16:25\"}"
+						}
+					]
+				},
+				{
+					"name": "delete_company",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwaXJhdGlvbl9kYXRlIjoiMjAyMS0wNC0xMVQxNDowNDo1Ni44Mjc4NTcifQ.Y035I4Tgq5sYwVXqFp6jTjIy_JKcP5_Briop2BuNmiw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/companies/{id}",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"companies",
+								"{id}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete company xpto_11",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "text"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/companies/xpto_11",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"companies",
+										"xpto_11"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "raw",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/octet-stream"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Apr 2021 00:18:31 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Python/3.9 aiohttp/3.7.4"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"description": "**/companies** requests"
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "get_all_products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/products",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_products_from_company",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/products?company_id={company_id}",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "company_id",
+									"value": "{company_id}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get claro_11 products",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/products?company_id=claro_11",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "company_id",
+											"value": "claro_11"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "331"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Apr 2021 00:10:04 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Python/3.9 aiohttp/3.7.4"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"company\": \"claro_11\",\n    \"products\": [\n        {\n            \"id\": \"claro_10\",\n            \"company_id\": \"claro_11\",\n            \"value\": 10,\n            \"created_at\": \"2021-04-10 23:57:01\"\n        },\n        {\n            \"id\": \"claro_20\",\n            \"company_id\": \"claro_11\",\n            \"value\": 20,\n            \"created_at\": \"2021-04-10 23:57:01\"\n        },\n        {\n            \"id\": \"claro_30\",\n            \"company_id\": \"claro_11\",\n            \"value\": 30,\n            \"created_at\": \"2021-04-10 23:57:48\"\n        }\n    ]\n}"
+						}
+					]
+				},
+				{
+					"name": "add product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwaXJhdGlvbl9kYXRlIjoiMjAyMS0wNC0xM1QwNzowMDo1MS44MzA4ODUifQ.L4xj5t0crLwh7VZ1VH-708IbL1cHfod-KDbfcOVyqqc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"company_id\": \"{company_id}\",\r\n    \"product_id\": \"{product_id}\",\r\n    \"value\": \"{value}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/products",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "add product claro_50 from claro_11 company",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"company_id\": \"claro_11\",\r\n    \"product_id\": \"claro_50\",\r\n    \"value\": 50\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:5000/products",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"products"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "28"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Apr 2021 10:03:12 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Python/3.9 aiohttp/3.7.4"
+								}
+							],
+							"cookie": [],
+							"body": "Produto claro_50 já existe."
+						}
+					]
+				},
+				{
+					"name": "delete product",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwaXJhdGlvbl9kYXRlIjoiMjAyMS0wNC0xM1QwNzowMDo1MS44MzA4ODUifQ.L4xj5t0crLwh7VZ1VH-708IbL1cHfod-KDbfcOVyqqc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "localhost:5000/products/{product_id}",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"products",
+								"{product_id}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "delete claro_50 product",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "localhost:5000/products/claro_50",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"products",
+										"claro_50"
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "raw",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/octet-stream"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 12 Apr 2021 10:03:15 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Python/3.9 aiohttp/3.7.4"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"description": "**/products** requests"
+		},
+		{
+			"name": "Recharges",
+			"item": [
+				{
+					"name": "get_all_recharges",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/recharges",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"recharges"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get_recharges_from_phone_number",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:5000/recharges?phone_number={phone_number}",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"recharges"
+							],
+							"query": [
+								{
+									"key": "phone_number",
+									"value": "{phone_number}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "get all recharges from phone number 5511999999999",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:5000/recharges?phone_number=5511999999999",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"recharges"
+									],
+									"query": [
+										{
+											"key": "phone_number",
+											"value": "5511999999999"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "210"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 11 Apr 2021 00:10:13 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "Python/3.9 aiohttp/3.7.4"
+								}
+							],
+							"cookie": [],
+							"body": "[{\"id\": 1, \"product_id\": \"claro_20\", \"phone_number\": 5511999999999, \"created_at\": \"2021-04-11 00:00:57\"}, {\"id\": 4, \"product_id\": \"claro_30\", \"phone_number\": 5511999999999, \"created_at\": \"2021-04-11 00:00:57\"}]"
+						}
+					]
+				},
+				{
+					"name": "recharge_phone",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"company_id\": \"claro_11\",\r\n   \"product_id\": \"claro_30\",\r\n   \"phone_number\": \"5511987654321\",\r\n   \"value\": 30.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:5000/recharges",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"recharges"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "**/recharges** requests"
+		}
+	]
+}
